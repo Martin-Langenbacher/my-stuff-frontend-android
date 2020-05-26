@@ -26,6 +26,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            buildConfigField("String", "APIFACTORY_HOSTNAME", "\"10.0.2.2\"")
+            buildConfigField("String", "APIFACTORY_PROTOCOL", "\"http\"")
+            buildConfigField("Integer", "APIFACTORY_PORT", "8080")
+        }
+
     }
 }
 
