@@ -19,24 +19,9 @@ public class MyStuffApplication extends Application {
         Timber.d("onCreate: Enter");
         instance = this;
         this.myStuffContext = new MyStuffContext().init(this);
-        stuffContext = new MyStuffContext();
-        stuffContext.initWithApplications(this);
         initTimber();
 
     }
-
-
-
-
-    /*
-
-
-
-    @Getter
-    private MyStuffContext stuffContext;
-    */
-
-
 
 
     @Override
@@ -55,40 +40,3 @@ public class MyStuffApplication extends Application {
 }
 
 
-
-/*
-
-package de.telekom.sea.mystuff.frontend.android.model;
-
-import android.app.Application;
-
-import de.telekom.sea.mystuff.frontend.android.BuildConfig;
-import lombok.Getter;
-import timber.log.Timber;
-
-public class MyStuffApplication extends Application {
-
-    @Getter
-    private MyStuffContext stuffContext;
-    public static MyStuffApplication instance;
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Timber.d("onCreate: Enter");
-        instance = this;
-        stuffContext = new MyStuffContext();
-        stuffContext.initWithApplication(this);
-        initTimber();
-    }
-
-
-
-
-
-}
-
-
-
-
-
- */
