@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         itemsList = findViewById(R.id.rv_items);
         //  --> check the dogsExample:  --> Mayo ==> refreshLayout = findViewById(R.id.refreshRideListLayout);
         viewModel = new ViewModelProvider(this).get(ItemListViewModel.class);                // warum macht man dies so kompliziert? --> ViewModelProvider: der Erzeuger der ViewModel, da die ViewModel kann länger leben als die MainActivity...
-        viewModel.initWithApplication(getApplication());  // springt in MyStuffViewModel, damit bekomme ich den Context --> Api-Factory sind definiert (Zentraler Bereich, wie ich an meine Dienste komme)Zeile macht:                                           // darum legt man die Daten ab und man holt sie die alte Instanz aus dem Speicher...
+        //viewModel.initWithApplication(getApplication());  // springt in MyStuffViewModel, damit bekomme ich den Context --> Api-Factory sind definiert (Zentraler Bereich, wie ich an meine Dienste komme)Zeile macht:                                           // darum legt man die Daten ab und man holt sie die alte Instanz aus dem Speicher...
         itemListAdapter = new ItemListRecyclerViewAdapter(new ArrayList<>());                       // Android kann sehr willkührlich sein.
         itemsList.setLayoutManager(new LinearLayoutManager(this));
         itemsList.setAdapter(itemListAdapter);  // verbindet Adapter mit RecyclerView; RecyclerView benutzt Adapter um die Zeilen aufzubauen.
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
             if (listApiResponse.isSuccessful()){
                 itemListAdapter.updateList(listApiResponse.body);
             } else {
-                ((MyStuffApplication) getApplication()).getMyStuffContext().sendInfoMessage(listApiResponse.errorMessage);
+                Toast.makeText(MainActivity.this, listApiResponse.errorMessage, Toast.LENGTH_LONG).show();
+            // ohne myStuff... keine Fehlermeldung, also über Toast...
+               // ((MyStuffApplication) getApplication()).getMyStuffContext().sendInfoMessage(listApiResponse.errorMessage);
             }
         });
     }
