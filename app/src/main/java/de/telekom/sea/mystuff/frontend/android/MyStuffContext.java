@@ -18,21 +18,24 @@ public class MyStuffContext {
     @Getter
     private ItemRepo itemRepo;
 
+    // constructor
     public MyStuffContext init(MyStuffApplication myStuffApplication){
-
         this.app = myStuffApplication;
         this.apiFactory = new ApiFactory();
         this.itemRepo = new ItemRepo(this.apiFactory.createApi(ItemApi.class));
         return this;
     }
 
+
     public String getString(int resourceId){
         return app.getString(resourceId);
     }
 
+
     public void sendInfoMessage(int resId){
         Toast.makeText(this.app.getApplicationContext(), getString(resId), Toast.LENGTH_LONG).show();
     }
+
 
     public void sendInfoMessage(String msg){
         Toast.makeText(this.app.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
