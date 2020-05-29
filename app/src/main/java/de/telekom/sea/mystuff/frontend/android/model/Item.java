@@ -11,7 +11,7 @@ import lombok.Setter;
 @Builder
 public class Item {
 
-    private Long Id;
+    private Long id;
     private String name;
     private int amount;
     private String location;

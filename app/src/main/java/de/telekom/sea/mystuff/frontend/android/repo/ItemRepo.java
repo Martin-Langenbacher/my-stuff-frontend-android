@@ -14,9 +14,10 @@ public class ItemRepo {
 
     public ItemRepo(ItemApi itemApi){ this.itemApi = itemApi; }
 
-    //public LiveData<ApiResponse<Item>> getById(Long id) { return itemApi.getById(id);}
+    public LiveData<ApiResponse<Item>> getById(long id) { return itemApi.getById(id);}
 
     public LiveData<ApiResponse<List<Item>>> getAll() { return itemApi.getAll();}
+
 
     //public  LiveData<ApiResponse<Item>> save(Item item) { return itemApi.save(item);}
 

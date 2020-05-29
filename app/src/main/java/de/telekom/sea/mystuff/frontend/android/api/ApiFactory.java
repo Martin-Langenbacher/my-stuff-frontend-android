@@ -48,6 +48,8 @@ public class ApiFactory {
                 .build();
     }
 
+
+
     /**
      * @param retrofitApiInterface defines the REST interface, must not be null
      * @param <S>

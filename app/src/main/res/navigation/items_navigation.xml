@@ -8,16 +8,24 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="de.telekom.sea.mystuff.frontend.android.ui.ListFragment"
+        android:name="de.telekom.sea.mystuff.frontend.android.ui.ItemListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/item_list_fragment" >
         <action
-            android:id="@+id/action_listFragment_to_detailFragment"
+            android:id="@+id/actionToDetail"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="de.telekom.sea.mystuff.frontend.android.ui.DetailFragment"
+        android:name="de.telekom.sea.mystuff.frontend.android.ui.ItemDetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/actionBackToList"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="itemId"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
 </navigation>
